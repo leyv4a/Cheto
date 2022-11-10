@@ -6,6 +6,10 @@ package mx.itson.Cheto.entidades;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.sql.Connection;
+import mx.itson.Cheto.persistencia.Conexion;
+import java.sql.Statement;
+import java.sql.ResultSet;
 
 /**
  *
@@ -14,136 +18,141 @@ import java.util.List;
 public class Computadora {
 
     /**
-     * @return the id
+     * @return the ID
      */
-    public int getId() {
-        return id;
+    public int getID() {
+        return ID;
     }
 
     /**
-     * @param id the id to set
+     * @param ID the ID to set
      */
-    public void setId(int id) {
-        this.id = id;
+    public void setID(int ID) {
+        this.ID = ID;
     }
 
     /**
-     * @return the marca
+     * @return the Marca
      */
     public String getMarca() {
-        return marca;
+        return Marca;
     }
 
     /**
-     * @param marca the marca to set
+     * @param Marca the Marca to set
      */
-    public void setMarca(String marca) {
-        this.marca = marca;
+    public void setMarca(String Marca) {
+        this.Marca = Marca;
     }
 
     /**
-     * @return the modelo
+     * @return the Modelo
      */
     public String getModelo() {
-        return modelo;
+        return Modelo;
     }
 
     /**
-     * @param modelo the modelo to set
+     * @param Modelo the Modelo to set
      */
-    public void setModelo(String modelo) {
-        this.modelo = modelo;
+    public void setModelo(String Modelo) {
+        this.Modelo = Modelo;
     }
 
     /**
-     * @return the color
+     * @return the Color
      */
     public String getColor() {
-        return color;
+        return Color;
     }
 
     /**
-     * @param color the color to set
+     * @param Color the Color to set
      */
-    public void setColor(String color) {
-        this.color = color;
+    public void setColor(String Color) {
+        this.Color = Color;
     }
 
     /**
-     * @return the ram
+     * @return the Ram
      */
     public String getRam() {
-        return ram;
+        return Ram;
     }
 
     /**
-     * @param ram the ram to set
+     * @param Ram the Ram to set
      */
-    public void setRam(String ram) {
-        this.ram = ram;
+    public void setRam(String Ram) {
+        this.Ram = Ram;
     }
 
     /**
-     * @return the procesador
+     * @return the Procesador
      */
     public String getProcesador() {
-        return procesador;
+        return Procesador;
     }
 
     /**
-     * @param procesador the procesador to set
+     * @param Procesador the Procesador to set
      */
-    public void setProcesador(String procesador) {
-        this.procesador = procesador;
+    public void setProcesador(String Procesador) {
+        this.Procesador = Procesador;
     }
 
     /**
-     * @return the almacenamiento
+     * @return the Almacenamiento
      */
     public String getAlmacenamiento() {
-        return almacenamiento;
+        return Almacenamiento;
     }
 
     /**
-     * @param almacenamiento the almacenamiento to set
+     * @param Almacenamiento the Almacenamiento to set
      */
-    public void setAlmacenamiento(String almacenamiento) {
-        this.almacenamiento = almacenamiento;
+    public void setAlmacenamiento(String Almacenamiento) {
+        this.Almacenamiento = Almacenamiento;
     }
 
     /**
-     * @return the os
+     * @return the Os
      */
     public String getOs() {
-        return os;
+        return Os;
     }
 
     /**
-     * @param os the os to set
+     * @param Os the Os to set
      */
-    public void setOs(String os) {
-        this.os = os;
+    public void setOs(String Os) {
+        this.Os = Os;
     }
-
-    private int id;
-    private String marca;
-    private String modelo;
-    private String color;
-    private String ram;
-    private String procesador;
-    private String almacenamiento;
-    private String os;
 
     public List<Computadora> obtener() {
 
         List<Computadora> computadoras = new ArrayList();
 
         try {
-
+            Connection conexion = Conexion.obtener();
+            Statement statement = conexion.createStatement();
+            ResultSet resultSet = statement.executeQuery("SELECT ID, Marca, Modelo, Color, Ram, Procesador, Almacenamiento, Os FROM computadora")
         } catch (Exception ex) {
             System.out.println("Ocurrio un error" + ex.getMessage());
 
         }
         return computadoras;
     }
+
+  
+
+    private int ID;
+    private String Marca;
+    private String Modelo;
+    private String Color;
+    private String Ram;
+    private String Procesador;
+    private String Almacenamiento;
+    private String Os;
+
 }

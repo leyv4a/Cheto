@@ -12,8 +12,12 @@ import java.sql.DriverManager;
  * @author gabri
  */
 public class Conexion {
+/**
+* Obtiene una conexion hacia la base de datos utilizando los parametros para conectarse a una base de datos
+* @return la conexion a la base de datos
+**/
 
-    public Connection obtener() {
+    public static Connection obtener() {
         Connection conexion = null;
         try {
             conexion = DriverManager.getConnection("jdbc:mysql://localhost/chetodb?user=root&password=gabrielleyva088");
